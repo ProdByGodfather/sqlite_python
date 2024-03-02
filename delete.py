@@ -1,9 +1,6 @@
-import sqlite3
+from main import cur, conn
 
-conn = sqlite3.connect('dr.db')
-cur = conn.cursor()
+id = int(input("Enter Id To delete: "))
 
-
-cur.execute("DELETE FROM people WHERE name='ali'")
-
+cur.execute("DELETE FROM users WHERE id=?",[id])
 conn.commit()

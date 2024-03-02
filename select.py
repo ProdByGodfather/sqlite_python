@@ -1,14 +1,14 @@
-# import module sqlite
-import sqlite3
+from main import cur, conn
+import os
 
-# Create Connection or db File
-conn = sqlite3.connect('godfather.db')
+os.system("cls")
+os.system('color 02')
 
-# select db
-cur = conn.cursor()
+age = int(input("Enter Age:"))
 
-peoples = cur.execute("SELECT * FROM persons")
+print("------------------ users ------------------")
 
-for i in peoples:
-    print(i[1])
+users = cur.execute("SELECT * FROM users WHERE age > ?",[age])
 
+for user in users:
+    print(f"id: {user[0]} | name: {user[1]} | family: {user[2]} | age: {user[3]}")
